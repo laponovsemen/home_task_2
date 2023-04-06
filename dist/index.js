@@ -1,17 +1,12 @@
 "use strict";
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
 Object.defineProperty(exports, "__esModule", { value: true });
-const express_1 = __importDefault(require("express"));
-const app_1 = require("./app");
+exports.startApp = void 0;
+const settings_1 = require("./settings");
 const port = process.env.PORT || 3000;
-const app = (0, express_1.default)();
-app.use(express_1.default.json());
-app.use("", app_1.startRouter);
 const startApp = () => {
-    app.listen(port, () => {
+    settings_1.app.listen(port, () => {
         console.log(`app started on ${port} port`);
     });
 };
-startApp();
+exports.startApp = startApp;
+(0, exports.startApp)();

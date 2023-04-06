@@ -1,17 +1,11 @@
-import express from 'express'
-import {startRouter} from './app'
+import {app} from "./settings";
 
 
 const port = process.env.PORT || 3000
-const app = express()
 
-app.use(express.json())
-app.use("", startRouter)
-
-const startApp =  () => {
+export const startApp =  () => {
     app.listen(port, () => {
         console.log(`app started on ${port} port`)
     })
 }
-
 startApp()
