@@ -62,3 +62,6 @@ export const createBlogBodyValidator = (req: Request, res: Response, next : Next
         res.status(400).send(errorsList)
     }
 }
+export const readBlogIDValidator = (req: Request, res: Response, next : NextFunction) => {
+
+}

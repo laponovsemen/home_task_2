@@ -21,8 +21,9 @@ exports.blogsRouter.post("/", middleware_1.basicAuthGuardMiddleware, middleware_
     res.send(result).status(200);
 });
 exports.blogsRouter.get("/:id", (req, res) => {
-    const result = (0, blogsRepository_1.getAllBlogs)();
-    res.status(200).send(result);
+    if ((0, blogsRepository_1.readBlogByID)(req.params.id)) {
+        res.status;
+    }
 });
 exports.blogsRouter.put("/:id", middleware_1.basicAuthGuardMiddleware, (req, res) => {
 });

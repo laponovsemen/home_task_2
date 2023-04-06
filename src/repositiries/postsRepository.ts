@@ -1,7 +1,7 @@
 
-import {PostViewModel} from "../appTypes";
+import {PostViewModelType} from "../appTypes";
 
-let posts : Array<PostViewModel> = []
+let posts : Array<PostViewModelType> = []
 
 export function deleteAllPostsData (){
     posts = []
