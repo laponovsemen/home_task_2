@@ -12,3 +12,5 @@ const startApp =  () => {
         console.log(`app started on ${port} port`)
     })
 }
+
+startApp()
