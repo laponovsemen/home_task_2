@@ -1,7 +1,7 @@
-import express, {Request, Response} from "express";
+import express, {Request, Response, Router} from "express";
 
 
-export const startRouter = express.Router()
+export const startRouter = Router({})
 
 startRouter.get("", (req: Request, res: Response) => {
     res.status(200).send("API started")
