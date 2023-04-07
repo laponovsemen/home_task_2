@@ -73,7 +73,7 @@ describe('POST ALL BLOGS',  () => {
                 description: "studiyng in KSMA",
                 websiteUrl: "https://samurai.it-incubator.io/lessons/homeworks?id=63077bcee5fc0a055535227d"})
             .set('Authorization', 'Basic YWRtaW46cXdlcnR5')
-            .expect(200)
+            .expect(201)
         //Checking of response Data
         expect(createRequest.body).toEqual({id : "0",
             name : "Semen",
@@ -90,7 +90,7 @@ describe('POST ALL BLOGS',  () => {
                 description: "studiyng in KSMA",
                 websiteUrl: "https://samurai.it-incubator.io/lessons/homeworks?id=63077bcee5fc0a055535227d"})
             .set('Authorization', 'Basic YWRtaW46cXdlcnR5')
-            .expect(200)
+            .expect(201)
         //Checking of response Data
         expect(createRequest.body).toEqual({id : "1",
             name : "Semen",
@@ -125,7 +125,7 @@ describe('GET BLOG BY ID',  () => {
                 description: "studiyng in KSMA",
                 websiteUrl: "https://samurai.it-incubator.io/lessons/homeworks?id=63077bcee5fc0a055535227d"})
             .set('Authorization', 'Basic YWRtaW46cXdlcnR5')
-            .expect(200)
+            .expect(201)
         //Checking of response Data
         expect(createRequest.body).toEqual({id : "0",
             name : "Semen",
@@ -153,7 +153,7 @@ describe('DELETE BLOG BY ID',  () => {
                 description: "studiyng in KSMA",
                 websiteUrl: "https://samurai.it-incubator.io/lessons/homeworks?id=63077bcee5fc0a055535227d"})
             .set('Authorization', 'Basic YWRtaW46cXdlcnR5')
-            .expect(200)
+            .expect(201)
         //Checking of response Data
         expect(createRequest.body).toEqual({id : "1",
             name : "Semen",

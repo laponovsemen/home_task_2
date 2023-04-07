@@ -35,7 +35,7 @@ blogsRouter.post("/",
     createBlogBodyValidator,
     (req: Request, res: Response) => {
         const result = createBlog(req.body)
-        res.send(result).status(201)
+        res.status(201).send(result)
 })
 
 blogsRouter.get("/:id", (req: Request, res: Response) => {

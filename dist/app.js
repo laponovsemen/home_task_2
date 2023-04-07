@@ -19,7 +19,7 @@ exports.blogsRouter.get("/", (req, res) => {
 });
 exports.blogsRouter.post("/", middleware_1.basicAuthGuardMiddleware, middleware_1.createBlogBodyValidator, (req, res) => {
     const result = (0, blogsRepository_1.createBlog)(req.body);
-    res.send(result).status(201);
+    res.status(201).send(result);
 });
 exports.blogsRouter.get("/:id", (req, res) => {
     const result = (0, blogsRepository_1.readBlogByID)(req.params.id);
