@@ -4,8 +4,9 @@ import {APIErrorResultType, FieldErrorType} from "./appTypes";
 export const basicAuthGuardMiddleware = (req: Request, res: Response, next : NextFunction) => {
     if(req.headers.authorization){
         const encoded : string = req.headers.authorization.split(" ")[1]
+        const encodeway = req.headers.authorization.split(" ")[0]
         const decoded : string = Buffer.from(encoded, 'base64').toString('utf8');
-        if(decoded === "admin:qwerty"){
+        if(decoded === "admin:qwerty" && encodeway === "Basic"){
             next()
         }else{
             res.sendStatus(401)
