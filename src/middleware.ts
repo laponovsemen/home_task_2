@@ -31,30 +31,30 @@ export const createBlogBodyValidator = (req: Request, res: Response, next : Next
     }
     // validation of proper description
     if(!req.body.description){
-        let error : FieldErrorType = {message : "no description prop in body", field: "name"}
+        let error : FieldErrorType = {message : "no description prop in body", field: "description"}
         errorsList.errorsMessages.push(error)
     }else if(typeof  req.body.description !== "string"){
-        let error : FieldErrorType = {message : "wrong type of description field of req.body(not string)", field: "name"}
+        let error : FieldErrorType = {message : "wrong type of description field of req.body(not string)", field: "description"}
         errorsList.errorsMessages.push(error)
     }else if(req.body.description.length > 500){
-        let error : FieldErrorType = {message : "wrong length of description field of req.body(more than 500 characters)", field: "name"}
+        let error : FieldErrorType = {message : "wrong length of description field of req.body(more than 500 characters)", field: "description"}
         errorsList.errorsMessages.push(error)
     }
     // validation of proper websiteUrl
     const httpRegExPattern = new RegExp("^https://([a-zA-Z0-9_-]+\.)+[a-zA-Z0-9_-]+(\/[a-zA-Z0-9_-]+)*\/?$")
     if(!req.body.websiteUrl){
-        let error : FieldErrorType = {message : "no websiteUrl prop in body", field: "name"}
+        let error : FieldErrorType = {message : "no websiteUrl prop in body", field: "websiteUrl"}
         errorsList.errorsMessages.push(error)
     }else if(typeof  req.body.websiteUrl !== "string"){
-        let error : FieldErrorType = {message : "wrong type of websiteUrl field of req.body(not string)", field: "name"}
+        let error : FieldErrorType = {message : "wrong type of websiteUrl field of req.body(not string)", field: "websiteUrl"}
         errorsList.errorsMessages.push(error)
     }else if(req.body.websiteUrl.length > 100){
-        let error : FieldErrorType = {message : "wrong length of websiteUrl field of req.body(more than 100 characters)", field: "name"}
+        let error : FieldErrorType = {message : "wrong length of websiteUrl field of req.body(more than 100 characters)", field: "websiteUrl"}
         errorsList.errorsMessages.push(error)
     }else
         //checking through proper http regex pattern
         if(!httpRegExPattern.test(req.body.websiteUrl)){
-            let error : FieldErrorType = {message : "No RegEx intersection", field: "name"}
+            let error : FieldErrorType = {message : "No RegEx intersection", field: "websiteUrl"}
         errorsList.errorsMessages.push(error)
     }
     if(!errorsList.errorsMessages.length){
@@ -78,30 +78,30 @@ export const readBlogIDValidator = (req: Request, res: Response, next : NextFunc
     }
     // validation of proper description
     if(!req.body.description){
-        let error : FieldErrorType = {message : "no description prop in body", field: "name"}
+        let error : FieldErrorType = {message : "no description prop in body", field: "description"}
         errorsList.errorsMessages.push(error)
     }else if(typeof  req.body.description !== "string"){
-        let error : FieldErrorType = {message : "wrong type of description field of req.body(not string)", field: "name"}
+        let error : FieldErrorType = {message : "wrong type of description field of req.body(not string)", field: "description"}
         errorsList.errorsMessages.push(error)
     }else if(req.body.description.length > 500){
-        let error : FieldErrorType = {message : "wrong length of description field of req.body(more than 500 characters)", field: "name"}
+        let error : FieldErrorType = {message : "wrong length of description field of req.body(more than 500 characters)", field: "description"}
         errorsList.errorsMessages.push(error)
     }
     // validation of proper websiteUrl
     const httpRegExPattern = new RegExp("^https://([a-zA-Z0-9_-]+\.)+[a-zA-Z0-9_-]+(\/[a-zA-Z0-9_-]+)*\/?$")
     if(!req.body.websiteUrl){
-        let error : FieldErrorType = {message : "no websiteUrl prop in body", field: "name"}
+        let error : FieldErrorType = {message : "no websiteUrl prop in body", field: "websiteUrl"}
         errorsList.errorsMessages.push(error)
     }else if(typeof  req.body.websiteUrl !== "string"){
-        let error : FieldErrorType = {message : "wrong type of websiteUrl field of req.body(not string)", field: "name"}
+        let error : FieldErrorType = {message : "wrong type of websiteUrl field of req.body(not string)", field: "websiteUrl"}
         errorsList.errorsMessages.push(error)
     }else if(req.body.websiteUrl.length > 100){
-        let error : FieldErrorType = {message : "wrong length of websiteUrl field of req.body(more than 100 characters)", field: "name"}
+        let error : FieldErrorType = {message : "wrong length of websiteUrl field of req.body(more than 100 characters)", field: "websiteUrl"}
         errorsList.errorsMessages.push(error)
     }else
         //checking through proper http regex pattern
     if(!httpRegExPattern.test(req.body.websiteUrl)){
-        let error : FieldErrorType = {message : "No RegEx intersection", field: "name"}
+        let error : FieldErrorType = {message : "No RegEx intersection", field: "websiteUrl"}
         errorsList.errorsMessages.push(error)
     }
     if(!errorsList.errorsMessages.length){
