@@ -65,14 +65,6 @@ export const createBlogBodyValidator = (req: Request, res: Response, next : Next
 export const readBlogIDValidator = (req: Request, res: Response, next : NextFunction) => {
     let errorsList : APIErrorResultType = {errorsMessages : []}
     // validation of proper name
-    if(!req.body.id){
-        let error : FieldErrorType = {message : "no id prop in body", field: "id"}
-        errorsList.errorsMessages.push(error)
-    }else if(typeof  req.body.id !== "string"){
-        let error : FieldErrorType = {message : "wrong type of id field of req.body(not string)", field: "name"}
-        errorsList.errorsMessages.push(error)
-    }
-    // validation of proper name
     if(!req.body.name){
         let error : FieldErrorType = {message : "no name prop in body", field: "name"}
         errorsList.errorsMessages.push(error)
