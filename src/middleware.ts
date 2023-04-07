@@ -166,6 +166,9 @@ export const createPostBodyValidator = (req: Request, res: Response, next : Next
     }else if(req.body.content.length > 1000){
         let error : FieldErrorType = {message : "wrong length of content field of req.body(more than 1000 characters)", field: "content"}
         errorsList.errorsMessages.push(error)
+    }else if(req.body.content.trim().length === 0){
+        let error : FieldErrorType = {message : "empty content field", field: "content"}
+        errorsList.errorsMessages.push(error)
     }
 
     if(!req.body.blogId){
