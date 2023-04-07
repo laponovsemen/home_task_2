@@ -41,7 +41,7 @@ blogsRouter.post("/",
 blogsRouter.get("/:id", (req: Request, res: Response) => {
     const result = readBlogByID(req.params.id)
     if(result){
-        res.status(200).send(result)
+        res.status(201).send(result)
     }else{
         res.sendStatus(404)
     }
