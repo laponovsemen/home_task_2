@@ -20,7 +20,7 @@ startRouter.get("/", (req: Request, res: Response) => {
 
 blogsRouter.get("/",(req: Request, res: Response) => {
     const result = getAllBlogs()
-    res.status(200).send(result)
+    res.status(201).send(result)
 })
 
 blogsRouter.post("/",
