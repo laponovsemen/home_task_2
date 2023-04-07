@@ -25,8 +25,16 @@ export function  createBlog(Object:BlogInputModelType) {
 }
 //create new blog according to BlogViewModelType
 export function  readBlogByID(idOfBlog : string) {
-    return blogs.filter(n => n.id ===idOfBlog)
-
+    return blogs.filter(n => n.id === idOfBlog)[0]
 }
 
+export function  deleteBlogByID(idOfBlog : string) {
+    for(let i =0; i < blogs.length; i++){
+        if(blogs[i].id === idOfBlog){
+            blogs.splice(i,1)
+            return true
+        }
+    }
+    return false
+}
 

@@ -1,7 +1,13 @@
 import {Request, Response, Router} from "express";
-import {createBlog, deleteAllBlogsData, getAllBlogs, readBlogByID} from "./repositiries/blogsRepository";
+import {
+    createBlog,
+    deleteAllBlogsData,
+    deleteBlogByID,
+    getAllBlogs,
+    readBlogByID
+} from "./repositiries/blogsRepository";
 import {deleteAllPostsData} from "./repositiries/postsRepository";
-import {basicAuthGuardMiddleware, createBlogBodyValidator} from "./middleware";
+import {basicAuthGuardMiddleware, createBlogBodyValidator, readBlogIDValidator} from "./middleware";
 
 
 export const startRouter = Router({})
@@ -26,17 +32,34 @@ blogsRouter.post("/",
 })
 
 blogsRouter.get("/:id", (req: Request, res: Response) => {
-    if(readBlogByID(req.params.id)){
-        res.status
+    const result = readBlogByID(req.params.id)
+    if(result){
+        res.status(200).send(result)
+    }else{
+        res.sendStatus(404)
     }
 })
 
-blogsRouter.put("/:id",basicAuthGuardMiddleware, (req: Request, res: Response) => {
-
+blogsRouter.put("/:id",
+    basicAuthGuardMiddleware,
+    readBlogIDValidator,
+    (req: Request, res: Response) => {
+    const result = readBlogByID(req.params.id.toString())
+        if(result){
+            res.status(200).send(result)
+        }else{
+            res.sendStatus(404)
+        }
 })
 
 blogsRouter.delete("/:id",basicAuthGuardMiddleware, (req: Request, res: Response) => {
+    const result = deleteBlogByID(req.params.id.toString())
+    if(result){
 
+        res.status(204).send(result)
+    }else{
+        res.sendStatus(404)
+    }
 })
 
 
