@@ -172,10 +172,8 @@ describe('DELETE BLOG BY ID',  () => {
         await request(app)
             .delete("/blogs/1000")
             .set('Authorization', 'Basic YWRtaW46cXdsdfsdfglcnR5')
-            .expect(400)
+            .expect(401)
     });
-
-
 });
 
 describe('PUT BLOG BY ID',  () => {

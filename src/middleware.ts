@@ -8,10 +8,10 @@ export const basicAuthGuardMiddleware = (req: Request, res: Response, next : Nex
         if(decoded === "admin:qwerty"){
             next()
         }else{
-            res.sendStatus(400)
+            res.sendStatus(401)
         }
     }else {
-        res.sendStatus(400)
+        res.sendStatus(401)
     }
 }
 
