@@ -1,5 +1,6 @@
 import {Request, Response, Router} from "express";
 import {
+    blogs,
     createBlog,
     deleteAllBlogsData,
     deleteBlogByID,
@@ -46,7 +47,11 @@ blogsRouter.put("/:id",
     (req: Request, res: Response) => {
     const result = readBlogByID(req.params.id.toString())
         if(result){
-            res.status(204).send(result)
+            const index = blogs.indexOf(result)
+            blogs[index].name = req.body.name
+            blogs[index].description = req.body.description
+            blogs[index].websiteUrl = req.body.websiteUrl
+            res.status(204).send(blogs[index])
         }else{
             res.sendStatus(404)
         }

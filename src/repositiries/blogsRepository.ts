@@ -1,7 +1,7 @@
 
 import {BlogInputModelType, BlogViewModelType} from "../appTypes";
 
-let blogs : Array<BlogViewModelType> = []
+export let blogs : Array<BlogViewModelType> = []
 
 //deleting all data in both databases
 export function deleteAllBlogsData (){
