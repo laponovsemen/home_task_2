@@ -7,8 +7,13 @@ import {
     getAllBlogs,
     readBlogByID
 } from "./repositiries/blogsRepository";
-import {deleteAllPostsData} from "./repositiries/postsRepository";
-import {basicAuthGuardMiddleware, createBlogBodyValidator, readBlogIDValidator} from "./middleware";
+import {createPosts, deleteAllPostsData, getAllPosts, readPostByID} from "./repositiries/postsRepository";
+import {
+    basicAuthGuardMiddleware,
+    createBlogBodyValidator,
+    createPostBodyValidator,
+    readBlogIDValidator
+} from "./middleware";
 
 
 export const startRouter = Router({})
@@ -70,15 +75,22 @@ blogsRouter.delete("/:id",basicAuthGuardMiddleware, (req: Request, res: Response
 
 //POST LOGIC
 postsRouter.get("/", (req: Request, res: Response) => {
-
+    const result = getAllPosts()
+    res.send(result).status(204)
 })
 
-postsRouter.post("/",basicAuthGuardMiddleware, (req: Request, res: Response) => {
-
+postsRouter.post("/",basicAuthGuardMiddleware,createPostBodyValidator , (req: Request, res: Response) => {
+    const result = createPosts(req.body)
+    res.status(201).send(result)
 })
 
 postsRouter.get("/:id", (req: Request, res: Response) => {
-
+    const result = readPostByID(req.params.id)
+    if(result){
+        res.status(200).send(result)
+    } else {
+        res.sendStatus(404)
+    }
 })
 
 postsRouter.put("/:id", basicAuthGuardMiddleware,(req: Request, res: Response) => {

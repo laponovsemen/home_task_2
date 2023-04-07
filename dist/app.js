@@ -54,10 +54,21 @@ exports.blogsRouter.delete("/:id", middleware_1.basicAuthGuardMiddleware, (req, 
 });
 //POST LOGIC
 exports.postsRouter.get("/", (req, res) => {
+    const result = (0, postsRepository_1.getAllPosts)();
+    res.send(result).status(204);
 });
-exports.postsRouter.post("/", middleware_1.basicAuthGuardMiddleware, (req, res) => {
+exports.postsRouter.post("/", middleware_1.basicAuthGuardMiddleware, middleware_1.createPostBodyValidator, (req, res) => {
+    const result = (0, postsRepository_1.createPosts)(req.body);
+    res.status(201).send(result);
 });
 exports.postsRouter.get("/:id", (req, res) => {
+    const result = (0, postsRepository_1.readPostByID)(req.params.id);
+    if (result) {
+        res.status(200).send(result);
+    }
+    else {
+        res.sendStatus(404);
+    }
 });
 exports.postsRouter.put("/:id", middleware_1.basicAuthGuardMiddleware, (req, res) => {
 });
