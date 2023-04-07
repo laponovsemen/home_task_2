@@ -83,7 +83,7 @@ postsRouter.delete("/:id", basicAuthGuardMiddleware,(req: Request, res: Response
 
 })
 
-testingRouter.delete("/",basicAuthGuardMiddleware, (req: Request, res: Response) => {
+testingRouter.delete("/", (req: Request, res: Response) => {
     deleteAllBlogsData()
     deleteAllPostsData()
     res.sendStatus(204)
