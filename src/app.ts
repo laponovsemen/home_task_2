@@ -20,7 +20,7 @@ startRouter.get("/", (req: Request, res: Response) => {
 
 blogsRouter.get("/",(req: Request, res: Response) => {
     const result = getAllBlogs()
-    res.status(201).send(result)
+    res.status(200).send(result)
 })
 
 blogsRouter.post("/",
@@ -46,7 +46,7 @@ blogsRouter.put("/:id",
     (req: Request, res: Response) => {
     const result = readBlogByID(req.params.id.toString())
         if(result){
-            res.status(200).send(result)
+            res.status(204).send(result)
         }else{
             res.sendStatus(404)
         }
