@@ -7,7 +7,7 @@ import {
     getAllBlogs,
     readBlogByID
 } from "./repositiries/blogsRepository";
-import {createPosts, deleteAllPostsData, getAllPosts, readPostByID} from "./repositiries/postsRepository";
+import {createPosts, deleteAllPostsData, getAllPosts, posts, readPostByID} from "./repositiries/postsRepository";
 import {
     basicAuthGuardMiddleware,
     createBlogBodyValidator,
@@ -93,12 +93,30 @@ postsRouter.get("/:id", (req: Request, res: Response) => {
     }
 })
 
-postsRouter.put("/:id", basicAuthGuardMiddleware,(req: Request, res: Response) => {
-
+postsRouter.put("/:id", basicAuthGuardMiddleware,createPostBodyValidator ,(req: Request, res: Response) => {
+    // coderewue
+    const post  = posts.filter(x => x.id === req.params.id)[0]
+    const indexOfPost = posts.indexOf(post)
+    if(post){
+        posts[indexOfPost].title = req.body.title
+        posts[indexOfPost].shortDescription = req.body.shortDescription
+        posts[indexOfPost].content = req.body.content
+        posts[indexOfPost].blogId = req.body.blogId
+        res.status(204).send(posts[indexOfPost])
+    } else {
+        res.sendStatus(404)
+    }
 })
 
 postsRouter.delete("/:id", basicAuthGuardMiddleware,(req: Request, res: Response) => {
-
+    const post  = posts.filter(x => x.id === req.params.id)[0]
+    const indexOfPost = posts.indexOf(post)
+    if(post){
+        posts.splice(indexOfPost, 1)
+        res.sendStatus(204)
+    } else {
+        res.sendStatus(404)
+    }
 })
 
 testingRouter.delete("/", (req: Request, res: Response) => {

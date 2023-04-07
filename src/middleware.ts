@@ -133,8 +133,8 @@ export const createPostBodyValidator = (req: Request, res: Response, next : Next
     }else if(typeof  req.body.title !== "string"){
         let error : FieldErrorType = {message : "wrong type of title field of req.body(not string)", field: "title"}
         errorsList.errorsMessages.push(error)
-    }else if(req.body.title.length > 15){
-        let error : FieldErrorType = {message : "wrong length of name field of req.body(more than 15 characters)", field: "title"}
+    }else if(req.body.title.length > 30){
+        let error : FieldErrorType = {message : "wrong length of name field of req.body(more than 30 characters)", field: "title"}
         errorsList.errorsMessages.push(error)
     }else if(req.body.title.trim().length === 0){
         let error : FieldErrorType = {message : "empty name field", field: "title"}
@@ -147,8 +147,8 @@ export const createPostBodyValidator = (req: Request, res: Response, next : Next
     }else if(typeof  req.body.shortDescription !== "string"){
         let error : FieldErrorType = {message : "wrong type of shortDescription field of req.body(not string)", field: "shortDescription"}
         errorsList.errorsMessages.push(error)
-    }else if(req.body.shortDescription.length > 500){
-        let error : FieldErrorType = {message : "wrong length of shortDescription field of req.body(more than 500 characters)", field: "shortDescription"}
+    }else if(req.body.shortDescription.length > 100){
+        let error : FieldErrorType = {message : "wrong length of shortDescription field of req.body(more than 100 characters)", field: "shortDescription"}
         errorsList.errorsMessages.push(error)
     }else if(req.body.shortDescription.trim().length === 0){
         let error : FieldErrorType = {message : "empty shortDescription field", field: "shortDescription"}
@@ -162,8 +162,8 @@ export const createPostBodyValidator = (req: Request, res: Response, next : Next
     }else if(typeof  req.body.content !== "string"){
         let error : FieldErrorType = {message : "wrong type of content field of req.body(not string)", field: "content"}
         errorsList.errorsMessages.push(error)
-    }else if(req.body.content.length > 100){
-        let error : FieldErrorType = {message : "wrong length of content field of req.body(more than 100 characters)", field: "content"}
+    }else if(req.body.content.length > 1000){
+        let error : FieldErrorType = {message : "wrong length of content field of req.body(more than 1000 characters)", field: "content"}
         errorsList.errorsMessages.push(error)
     }
 
@@ -173,10 +173,7 @@ export const createPostBodyValidator = (req: Request, res: Response, next : Next
     }else if(typeof  req.body.blogId !== "string"){
         let error : FieldErrorType = {message : "wrong type of content field of req.body(not string)", field: "blogId"}
         errorsList.errorsMessages.push(error)
-    }else if(req.body.blogId.length > 100){
-        let error : FieldErrorType = {message : "wrong length of content field of req.body(more than 100 characters)", field: "blogId"}
-        errorsList.errorsMessages.push(error)
-    }if(!blogs.filter(n => n.id === req.body.blogId)){
+    }else if(!blogs.filter(n => n.id === req.body.blogId)){
         let error : FieldErrorType = {message : "no blog with such id in memory", field: "blogId"}
         errorsList.errorsMessages.push(error)
     }

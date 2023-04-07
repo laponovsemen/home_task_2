@@ -70,9 +70,31 @@ exports.postsRouter.get("/:id", (req, res) => {
         res.sendStatus(404);
     }
 });
-exports.postsRouter.put("/:id", middleware_1.basicAuthGuardMiddleware, (req, res) => {
+exports.postsRouter.put("/:id", middleware_1.basicAuthGuardMiddleware, middleware_1.createPostBodyValidator, (req, res) => {
+    // coderewue
+    const post = postsRepository_1.posts.filter(x => x.id === req.params.id)[0];
+    const indexOfPost = postsRepository_1.posts.indexOf(post);
+    if (post) {
+        postsRepository_1.posts[indexOfPost].title = req.body.title;
+        postsRepository_1.posts[indexOfPost].shortDescription = req.body.shortDescription;
+        postsRepository_1.posts[indexOfPost].content = req.body.content;
+        postsRepository_1.posts[indexOfPost].blogId = req.body.blogId;
+        res.status(204).send(postsRepository_1.posts[indexOfPost]);
+    }
+    else {
+        res.sendStatus(404);
+    }
 });
 exports.postsRouter.delete("/:id", middleware_1.basicAuthGuardMiddleware, (req, res) => {
+    const post = postsRepository_1.posts.filter(x => x.id === req.params.id)[0];
+    const indexOfPost = postsRepository_1.posts.indexOf(post);
+    if (post) {
+        postsRepository_1.posts.splice(indexOfPost, 1);
+        res.sendStatus(204);
+    }
+    else {
+        res.sendStatus(404);
+    }
 });
 exports.testingRouter.delete("/", (req, res) => {
     (0, blogsRepository_1.deleteAllBlogsData)();

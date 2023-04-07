@@ -2,7 +2,7 @@
 import {BlogInputModelType, PostInputModelType, PostViewModelType} from "../appTypes";
 import {blogs} from "./blogsRepository";
 
-let posts : Array<PostViewModelType> = []
+export let posts : Array<PostViewModelType> = []
 
 export function deleteAllPostsData (){
     posts = []
