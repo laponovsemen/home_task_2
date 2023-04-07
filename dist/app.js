@@ -9,6 +9,7 @@ exports.startRouter = (0, express_1.Router)({});
 exports.blogsRouter = (0, express_1.Router)({});
 exports.postsRouter = (0, express_1.Router)({});
 exports.testingRouter = (0, express_1.Router)({});
+//BLOG  LOGIC
 exports.startRouter.get("/", (req, res) => {
     res.status(200).send("API started");
 });
@@ -32,7 +33,11 @@ exports.blogsRouter.get("/:id", (req, res) => {
 exports.blogsRouter.put("/:id", middleware_1.basicAuthGuardMiddleware, middleware_1.readBlogIDValidator, (req, res) => {
     const result = (0, blogsRepository_1.readBlogByID)(req.params.id.toString());
     if (result) {
-        res.status(204).send(result);
+        const index = blogsRepository_1.blogs.indexOf(result);
+        blogsRepository_1.blogs[index].name = req.body.name;
+        blogsRepository_1.blogs[index].description = req.body.description;
+        blogsRepository_1.blogs[index].websiteUrl = req.body.websiteUrl;
+        res.status(204).send(blogsRepository_1.blogs[index]);
     }
     else {
         res.sendStatus(404);
@@ -47,6 +52,7 @@ exports.blogsRouter.delete("/:id", middleware_1.basicAuthGuardMiddleware, (req, 
         res.sendStatus(404);
     }
 });
+//POST LOGIC
 exports.postsRouter.get("/", (req, res) => {
 });
 exports.postsRouter.post("/", middleware_1.basicAuthGuardMiddleware, (req, res) => {

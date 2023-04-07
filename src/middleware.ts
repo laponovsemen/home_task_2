@@ -28,7 +28,7 @@ export const createBlogBodyValidator = (req: Request, res: Response, next : Next
     }else if(req.body.name.length > 15){
         let error : FieldErrorType = {message : "wrong length of name field of req.body(more than 15 characters)", field: "name"}
         errorsList.errorsMessages.push(error)
-    }if(req.body.name.trim().length === 0){
+    }else if(req.body.name.trim().length === 0){
         let error : FieldErrorType = {message : "empty name field", field: "name"}
         errorsList.errorsMessages.push(error)
     }
@@ -42,7 +42,7 @@ export const createBlogBodyValidator = (req: Request, res: Response, next : Next
     }else if(req.body.description.length > 500){
         let error : FieldErrorType = {message : "wrong length of description field of req.body(more than 500 characters)", field: "description"}
         errorsList.errorsMessages.push(error)
-    }if(req.body.description.trim().length === 0){
+    }else if(req.body.description.trim().length === 0){
         let error : FieldErrorType = {message : "empty description field", field: "name"}
         errorsList.errorsMessages.push(error)
     }
@@ -81,7 +81,7 @@ export const readBlogIDValidator = (req: Request, res: Response, next : NextFunc
     }else if(req.body.name.length > 15){
         let error : FieldErrorType = {message : "wrong length of name field of req.body(more than 15 characters)", field: "name"}
         errorsList.errorsMessages.push(error)
-    }if(req.body.name.trim().length === 0){
+    }else if(req.body.name.trim().length === 0){
         let error : FieldErrorType = {message : "empty name field", field: "name"}
         errorsList.errorsMessages.push(error)
     }
@@ -95,7 +95,7 @@ export const readBlogIDValidator = (req: Request, res: Response, next : NextFunc
     }else if(req.body.description.length > 500){
         let error : FieldErrorType = {message : "wrong length of description field of req.body(more than 500 characters)", field: "description"}
         errorsList.errorsMessages.push(error)
-    }if(req.body.description.trim().length === 0){
+    } else if(req.body.description.trim().length === 0){
         let error : FieldErrorType = {message : "empty description field", field: "name"}
         errorsList.errorsMessages.push(error)
     }

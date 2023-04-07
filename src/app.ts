@@ -15,6 +15,7 @@ export const startRouter = Router({})
 export const blogsRouter = Router({})
 export const postsRouter = Router({})
 export const testingRouter = Router({})
+//BLOG  LOGIC
 startRouter.get("/", (req: Request, res: Response) => {
     res.status(200).send("API started")
 })
@@ -67,7 +68,7 @@ blogsRouter.delete("/:id",basicAuthGuardMiddleware, (req: Request, res: Response
     }
 })
 
-
+//POST LOGIC
 postsRouter.get("/", (req: Request, res: Response) => {
 
 })
