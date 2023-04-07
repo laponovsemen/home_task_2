@@ -180,6 +180,9 @@ export const createPostBodyValidator = (req: Request, res: Response, next : Next
     }else if(!posts.filter(n => n.id === req.body.blogId)){
         let error : FieldErrorType = {message : "no blog with such id in memory", field: "blogId"}
         errorsList.errorsMessages.push(error)
+    } else if(req.body.blogId.length > 35){
+        let error : FieldErrorType = {message : "no blog with such id in memory", field: "blogId"}
+        errorsList.errorsMessages.push(error)
     }
 
 
