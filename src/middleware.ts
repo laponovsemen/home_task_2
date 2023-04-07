@@ -1,6 +1,7 @@
 import {NextFunction, Request, Response} from "express";
 import {APIErrorResultType, FieldErrorType} from "./appTypes";
 import {blogs} from "./repositiries/blogsRepository";
+import {posts} from "./repositiries/postsRepository";
 
 export const basicAuthGuardMiddleware = (req: Request, res: Response, next : NextFunction) => {
     if(req.headers.authorization){
@@ -174,6 +175,9 @@ export const createPostBodyValidator = (req: Request, res: Response, next : Next
         let error : FieldErrorType = {message : "wrong type of content field of req.body(not string)", field: "blogId"}
         errorsList.errorsMessages.push(error)
     }else if(!blogs.filter(n => n.id === req.body.blogId)){
+        let error : FieldErrorType = {message : "no blog with such id in memory", field: "blogId"}
+        errorsList.errorsMessages.push(error)
+    }else if(!posts.filter(n => n.id === req.body.blogId)){
         let error : FieldErrorType = {message : "no blog with such id in memory", field: "blogId"}
         errorsList.errorsMessages.push(error)
     }
